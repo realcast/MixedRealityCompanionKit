@@ -3,6 +3,11 @@ AppPackages/
 BundleArtifacts/
 bin/
 obj/
+Debug/
+x64/
+UpgradeLog.htm
+packages/
+
 .vs/
 *.user
 project.lock.json
@@ -20,3 +25,5 @@ PosterCalibrationSample/Plugin/Plugin.VC.*
 PosterCalibrationSample/Plugin/Release*/
 PosterCalibrationSample/Plugin/Debug*/
 PosterCalibrationSample/Plugin/Packages*/
+KinectIPD/KinectIPD/CredentialsDialog.xaml
+KinectIPD/KinectIPD/CredentialsDialog.xaml
