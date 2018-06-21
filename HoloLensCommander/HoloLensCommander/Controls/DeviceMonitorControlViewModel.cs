@@ -296,6 +296,49 @@ namespace HoloLensCommander
             }
         }
 
+        string appId = null;
+        string packageName = null;
+        int lastProcessID = 0;
+        internal async Task<int> LaunchKiosk(string appName)
+        {
+            int processId = 0;
+
+            if (this.IsConnected && this.IsSelected)
+            {
+                try
+                { 
+                        AppPackages availableApps = await this.deviceMonitor.GetInstalledApplicationsAsync();
+                        foreach (PackageInfo packageInfo in availableApps.Packages)
+                        {
+                            if (appName == packageInfo.Name)
+                            {
+                                appId = packageInfo.AppId;
+                                packageName = packageInfo.FullName;
+                                break;
+                            }
+                        }
+                    RunningProcesses runningProcesses = await this.deviceMonitor.GetRunningProcessesAsync();
+
+                    
+                    if (!runningProcesses.Contains(lastProcessID) || lastProcessID == 0 || !runningProcesses.Processes.Find(x => x.ProcessId == lastProcessID).IsRunning)
+                    {
+                        processId = (int)await this.deviceMonitor.LaunchApplicationAsync(
+                            appId,
+                            packageName);
+                        lastProcessID = processId;
+                    }
+                }
+                catch (Exception e)
+                {
+                    this.StatusMessage = string.Format(
+                        "Failed to launch {0} - {1}",
+                        appName,
+                        e.Message);
+                }
+            }
+
+            return processId;
+        }
         /// <summary>
         /// Launches an application on this device.
         /// </summary>
@@ -677,8 +720,7 @@ namespace HoloLensCommander
                 this.Ipd = sender.Ipd.ToString();
             }
 
-            // Relaunch App if it is not the same app
-            Task t = LaunchAppAsync("isxp-branly");
+            Task t = LaunchKiosk("isxp-branly");
         }
 
         /// <summary>
@@ -863,6 +905,7 @@ namespace HoloLensCommander
                 MarshalStatusMessageUpdate(string.Format(
                     "{0} has exited",
                     appName));
+
             }
             catch (Exception e)
             {
