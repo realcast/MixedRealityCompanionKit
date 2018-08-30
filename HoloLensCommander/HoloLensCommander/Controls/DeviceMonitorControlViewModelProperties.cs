@@ -158,6 +158,20 @@ namespace HoloLensCommander
             }
         }
 
+
+        private bool isOnACPower = false;
+        public bool IsOnACPower
+        {
+            get
+            {
+                return this.isOnACPower;
+            }
+            set
+            {
+                if (this.isOnACPower != value)
+                    this.isOnACPower = value;
+            }
+        }
         /// <summary>
         /// Gets or sets a value specifying whether or not the monitor control is selected in the UI.
         /// </summary>

@@ -303,7 +303,7 @@ namespace HoloLensCommander
         {
             int processId = 0;
 
-            if (this.IsConnected && this.IsSelected)
+            if (this.IsConnected && this.IsSelected && !this.IsOnACPower)
             {
                 try
                 { 
@@ -712,6 +712,7 @@ namespace HoloLensCommander
 
             // Update the UI
             this.SetFilter();
+            this.IsOnACPower = sender.BatteryState.IsOnAcPower;
             this.PowerIndicator = sender.BatteryState.IsOnAcPower ? OnAcPowerLabel : OnBatteryLabel;
             this.BatteryLevel = string.Format("{0}%", sender.BatteryState.Level.ToString("#.00"));
             if (this.deviceMonitor.Platform == DevicePortalPlatforms.HoloLens)
@@ -720,7 +721,7 @@ namespace HoloLensCommander
                 this.Ipd = sender.Ipd.ToString();
             }
 
-            Task t = LaunchKiosk("isxp-branly");
+            Task t = LaunchKiosk("isxp-chamarande");
         }
 
         /// <summary>
