@@ -697,7 +697,7 @@ namespace HoloLensCommander
                 // Cause common apps to be refreshed.
                 this.deviceMonitorControl.NotifySelectedChanged();
                 this.firstContact = true;
-
+                Task ipdTask = sender.SetIpd(65f);
             }
 
             if (this.Address != this.deviceMonitor.Address)
