@@ -309,7 +309,7 @@ namespace HoloLensCommander
         {
             int processId = 0;
 
-            if (this.IsConnected && this.IsSelected && !this.IsOnACPower)
+            if (this.IsConnected && this.isSelectedForKiosk && !this.IsOnACPower)
             {
                 try
                 {
@@ -326,7 +326,7 @@ namespace HoloLensCommander
                     RunningProcesses runningProcesses = await this.deviceMonitor.GetRunningProcessesAsync();
 
 
-                    if (!runningProcesses.Contains(lastProcessID) || lastProcessID == 0 || !runningProcesses.Processes.Find(x => x.ProcessId == lastProcessID).IsRunning)
+                    if (runningProcesses == null || !runningProcesses.Contains(lastProcessID) || lastProcessID == 0 || !runningProcesses.Processes.Find(x => x.ProcessId == lastProcessID).IsRunning)
                     {
                         processId = (int)await this.deviceMonitor.LaunchApplicationAsync(
                             appId,
