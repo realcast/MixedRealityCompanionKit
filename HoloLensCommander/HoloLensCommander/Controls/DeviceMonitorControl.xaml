@@ -141,14 +141,13 @@
                     Canvas.Left="131" Canvas.Top="4"/>
             </Canvas>
             <ScrollViewer
-                Width="262" Height="40"
+                Width="200" Height="40"
                 HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="488" Canvas.Top="1">
                 <TextBlock 
                     x:Name="status" 
                     Text="{Binding Path=StatusMessage}"
-                    TextWrapping="Wrap" FontSize="16"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Width="262"/>
+                    TextWrapping="Wrap" FontSize="16" 
+                    Width="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </ScrollViewer>
             <Button 
                 x:Name="clearStatus"
@@ -162,6 +161,17 @@
                     <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
                 </Button.RenderTransform>
             </Button>
+            <CheckBox 
+                x:Name="selectedForKioskCheck" 
+                ToolTipService.ToolTip="Select / Deselect device for kiosk mode"
+                IsChecked="{Binding IsSelectedForKiosk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                HorizontalAlignment="Left" VerticalAlignment="Center" 
+                RenderTransformOrigin="-0.117,0.646" 
+                Width="20" Canvas.Left="713" Canvas.Top="4" Margin="0,0,0,0">
+                <CheckBox.RenderTransform>
+                    <CompositeTransform ScaleX="1.5" ScaleY="1.5" TranslateX="-6.17" TranslateY="2.336"/>
+                </CheckBox.RenderTransform>
+            </CheckBox>
         </Canvas>
     </Grid>
 </Page>

@@ -195,6 +195,27 @@ namespace HoloLensCommander
         }
 
         /// <summary>
+        /// Gets or sets a value specifying whether or not the monitor control is selected in the UI.
+        /// </summary>
+        private bool isSelectedForKiosk = false;
+        public bool IsSelectedForKiosk
+        {
+            get
+            {
+                return this.isSelectedForKiosk;
+            }
+
+            set
+            {
+                if (this.isSelectedForKiosk != value)
+                {
+                    this.isSelectedForKiosk = value;
+                    this.NotifyPropertyChanged("IsSelectedForKiosk");
+                    this.deviceMonitorControl.NotifySelectedChanged();
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets the user specified name associated with this device.
         /// </summary>
         private string name;

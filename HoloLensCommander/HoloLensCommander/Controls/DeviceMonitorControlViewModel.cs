@@ -67,6 +67,12 @@ namespace HoloLensCommander
         /// </summary>
         private bool oldIsSelected = false;
 
+
+        /// <summary>
+        /// Indicates whether or not the monitor control was selected prior to loss of heartbeat.
+        /// </summary>
+        private bool oldIsSelectedForKiosk = false;
+
         /// <summary>
         /// Event that is notified when a property value has changed.
         /// </summary>
@@ -95,7 +101,7 @@ namespace HoloLensCommander
 
             this.Address = deviceMonitor.Address;
             this.IsSelected = true;
-
+            this.IsSelectedForKiosk = false;
             this.RegisterCommands();
         }
 
@@ -306,20 +312,20 @@ namespace HoloLensCommander
             if (this.IsConnected && this.IsSelected && !this.IsOnACPower)
             {
                 try
-                { 
-                        AppPackages availableApps = await this.deviceMonitor.GetInstalledApplicationsAsync();
-                        foreach (PackageInfo packageInfo in availableApps.Packages)
+                {
+                    AppPackages availableApps = await this.deviceMonitor.GetInstalledApplicationsAsync();
+                    foreach (PackageInfo packageInfo in availableApps.Packages)
+                    {
+                        if (appName == packageInfo.Name)
                         {
-                            if (appName == packageInfo.Name)
-                            {
-                                appId = packageInfo.AppId;
-                                packageName = packageInfo.FullName;
-                                break;
-                            }
+                            appId = packageInfo.AppId;
+                            packageName = packageInfo.FullName;
+                            break;
                         }
+                    }
                     RunningProcesses runningProcesses = await this.deviceMonitor.GetRunningProcessesAsync();
 
-                    
+
                     if (!runningProcesses.Contains(lastProcessID) || lastProcessID == 0 || !runningProcesses.Processes.Find(x => x.ProcessId == lastProcessID).IsRunning)
                     {
                         processId = (int)await this.deviceMonitor.LaunchApplicationAsync(
@@ -662,6 +668,14 @@ namespace HoloLensCommander
                 this.oldIsSelected = true;
             }
 
+            // Handle whether or not we were previously selected
+            if (!this.oldIsSelectedForKiosk &&
+                this.IsSelectedForKiosk)
+            {
+                this.IsSelectedForKiosk = false;
+                this.oldIsSelectedForKiosk = true;
+            }
+
             // Update the heartbeat based UI
             this.PowerIndicator = OnBatteryLabel;
             this.BatteryLevel = "--";
@@ -689,6 +703,13 @@ namespace HoloLensCommander
             {
                 this.IsSelected = true;
                 this.oldIsSelected = false;
+            }
+
+            if (this.oldIsSelectedForKiosk &&
+                !this.IsSelectedForKiosk)
+            {
+                this.IsSelectedForKiosk = true;
+                this.oldIsSelectedForKiosk = false;
             }
 
             // Was this the first time we received a heartbeat?
@@ -720,8 +741,10 @@ namespace HoloLensCommander
                 this.ThermalStatus = (sender.ThermalStage == ThermalStages.Normal) ? Visibility.Collapsed : Visibility.Visible;
                 this.Ipd = sender.Ipd.ToString();
             }
-
-            Task t = LaunchKiosk("isxp-chamarande");
+            if(this.IsSelectedForKiosk)
+            {
+                Task t = LaunchKiosk("isxp-chamarande");
+            }
         }
 
         /// <summary>
