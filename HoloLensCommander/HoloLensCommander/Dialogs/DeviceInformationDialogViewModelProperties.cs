@@ -3,7 +3,7 @@
 
 using System.Threading.Tasks;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the DeviceInformationDialog object.

@@ -4,7 +4,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The class that implements the select application files dialog.

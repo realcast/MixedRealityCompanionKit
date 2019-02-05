@@ -4,7 +4,7 @@
 using System;
 using System.Windows.Input;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Simple implementation of the System.Windows.Input.ICommand interface.

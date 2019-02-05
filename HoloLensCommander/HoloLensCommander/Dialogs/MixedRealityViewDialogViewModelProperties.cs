@@ -3,7 +3,7 @@
 
 using System;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the MixedRealityViewDialog object.

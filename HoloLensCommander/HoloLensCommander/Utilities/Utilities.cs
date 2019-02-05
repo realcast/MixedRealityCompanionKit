@@ -12,7 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using static Microsoft.Tools.WindowsDevicePortal.DevicePortal;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Collection of static methods that perform various utilitarian tasks.

@@ -3,7 +3,7 @@
 
 using System.ComponentModel;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the TagDeviceDialog object.

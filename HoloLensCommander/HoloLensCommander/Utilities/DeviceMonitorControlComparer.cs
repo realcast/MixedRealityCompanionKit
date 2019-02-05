@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Implementation of IComparer<T> for DeviceMonitorControl objects.

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the SettingsDialog object.
@@ -31,6 +31,7 @@ namespace HoloLensCommander
 
             this.DefaultSsid = settings.DefaultSsid;
             this.DefaultNetworkKey = settings.DefaultNetworkKey;
+            this.AppName = settings.AppName;
         }
 
         /// <summary>
@@ -62,6 +63,7 @@ namespace HoloLensCommander
 
             settings.DefaultSsid = this.DefaultSsid;
             settings.DefaultNetworkKey = this.DefaultNetworkKey;
+            settings.AppName = this.AppName;
         }
     }
 }

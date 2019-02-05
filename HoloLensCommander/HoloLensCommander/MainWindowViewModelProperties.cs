@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the MainPage.
@@ -50,6 +50,23 @@ namespace HoloLensCommander
                 {
                     canManageApps = value;
                     this.NotifyPropertyChanged("CanManageApps");
+                }
+            }
+        }
+
+
+        private string appName = string.Empty;
+
+        public string AppName
+        {
+            get { return appName; }
+
+            set
+            {
+                if(this.appName != value)
+                {
+                    this.appName = value;
+                    // Send notification
                 }
             }
         }

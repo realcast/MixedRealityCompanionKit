@@ -3,7 +3,7 @@
 
 using Windows.UI;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     public class ConnectionInformation
     {

@@ -3,14 +3,14 @@
 
 using Windows.UI.Xaml;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the DeviceMonitorControl object.
     /// </summary>
     partial class DeviceMonitorControlViewModel
     {
-        
+
         /// <summary>
         /// Gets the address of this device.
         /// </summary>
@@ -21,7 +21,7 @@ namespace HoloLensCommander
             {
                 return this.address;
             }
-            
+
             private set
             {
                 if (this.address != value)
@@ -43,7 +43,7 @@ namespace HoloLensCommander
             {
                 return this.batteryLevel;
             }
-            
+
             private set
             {
                 if (this.batteryLevel != value)
@@ -95,7 +95,7 @@ namespace HoloLensCommander
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets or sets a string representation of the interpuplliary distance recorded on this device.
         /// </summary>
@@ -125,8 +125,8 @@ namespace HoloLensCommander
                 return this.ipdVisibility;
             }
 
-            private set 
-            { 
+            private set
+            {
                 if (this.ipdVisibility != value)
                 {
                     this.ipdVisibility = value;
@@ -179,7 +179,7 @@ namespace HoloLensCommander
         public bool IsSelected
         {
             get
-            { 
+            {
                 return this.isSelected;
             }
 
@@ -225,13 +225,33 @@ namespace HoloLensCommander
             {
                 return this.name;
             }
-            
+
             set
             {
                 if (this.name != value)
                 {
                     this.name = value;
                     this.NotifyPropertyChanged("Name");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get or set the name of the app to launch in Kiosk Mode
+        /// </summary>
+        private string appName;
+        public string AppName
+        {
+            get
+            {
+                return this.appName;
+            }
+
+            set
+            {
+                if (this.appName != value)
+                {
+                    this.appName = value;
                 }
             }
         }
@@ -246,7 +266,7 @@ namespace HoloLensCommander
             {
                 return this.powerIndicator;
             }
-            
+
             private set
             {
                 if (this.powerIndicator != value)
@@ -267,7 +287,7 @@ namespace HoloLensCommander
             {
                 return this.statusMessage;
             }
-            
+
             private set
             {
                 if (!this.statusMessage.Equals(value))
@@ -288,7 +308,7 @@ namespace HoloLensCommander
             {
                 return this.thermalStatus;
             }
-            
+
             private set
             {
                 if (this.thermalStatus != value)

@@ -3,7 +3,7 @@
 
 using System;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Flags used to specify the types of devices to select/deselect.

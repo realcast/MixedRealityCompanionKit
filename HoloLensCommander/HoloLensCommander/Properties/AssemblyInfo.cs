@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HoloLensCommander")]
+[assembly: AssemblyTitle("RealcastMonitor")]
 [assembly: AssemblyDescription("Monitor and manage multiple Windows Mixed Reality devices.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HoloLensCommander")]
+[assembly: AssemblyProduct("RealcastMonitor")]
 [assembly: AssemblyCopyright("Copyright © 2016-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

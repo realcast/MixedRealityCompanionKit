@@ -4,7 +4,7 @@
 using System;
 using System.ComponentModel;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the MixedRealityViewDialog object.

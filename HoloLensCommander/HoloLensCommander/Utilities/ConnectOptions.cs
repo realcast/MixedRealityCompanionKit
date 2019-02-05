@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Object encapsulating the options for connecting to a device.

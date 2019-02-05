@@ -5,7 +5,7 @@ using System;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// A message dialog with yes / no buttons.

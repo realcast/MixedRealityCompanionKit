@@ -11,7 +11,7 @@ using Windows.UI.Core;
 using Microsoft.Tools.WindowsDevicePortal;
 using static Microsoft.Tools.WindowsDevicePortal.DevicePortal;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Class that provides the relevant functionality of the Windows Device Portal.

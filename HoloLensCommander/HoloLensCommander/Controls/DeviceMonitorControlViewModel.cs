@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Controls;
 using Microsoft.Tools.WindowsDevicePortal;
 using static Microsoft.Tools.WindowsDevicePortal.DevicePortal;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the DeviceMonitorControl object.
@@ -740,10 +740,10 @@ namespace HoloLensCommander
             {
                 this.ThermalStatus = (sender.ThermalStage == ThermalStages.Normal) ? Visibility.Collapsed : Visibility.Visible;
                 this.Ipd = sender.Ipd.ToString();
-            }
-            if(this.IsSelectedForKiosk)
-            {
-                Task t = LaunchKiosk("isxp-chamarande");
+                if (this.IsSelectedForKiosk && this.AppName != null)
+                {
+                    Task t = LaunchKiosk(this.AppName);
+                }
             }
         }
 

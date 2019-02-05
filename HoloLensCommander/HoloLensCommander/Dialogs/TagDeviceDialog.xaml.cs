@@ -3,7 +3,7 @@
 
 using Windows.UI.Xaml.Controls;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The class that implements the dialog used to tag the connected device with information useful to the user

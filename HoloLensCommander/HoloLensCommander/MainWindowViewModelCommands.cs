@@ -13,7 +13,7 @@ using Windows.Storage.Pickers;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the MainPage.
@@ -67,7 +67,7 @@ namespace HoloLensCommander
         {
             this.StatusMessage = string.Empty;
         }
-        
+
         /// <summary>
         /// Command used to close all applications on the selected devices.
         /// </summary>
@@ -136,7 +136,7 @@ namespace HoloLensCommander
             this.StatusMessage = string.Empty;
 
             await this.RegisterDeviceAsync(
-                monitor, 
+                monitor,
                 connectOptions.Name);
         }
 
@@ -225,7 +225,7 @@ namespace HoloLensCommander
             AppInstallFiles installFiles = new AppInstallFiles();
             ContentDialog dialog = new GetAppInstallFilesDialog(installFiles);
             await dialog.ShowAsync();
-            
+
             if (installFiles.AppPackageFile == null)
             {
                 return;
@@ -450,7 +450,7 @@ namespace HoloLensCommander
         private async Task SaveMixedRealityFiles()
         {
             // We save images and videos in a subfolder of the pictures library.
-            StorageFolder picturesLibrary = KnownFolders.PicturesLibrary; 
+            StorageFolder picturesLibrary = KnownFolders.PicturesLibrary;
             StorageFolder folder = await picturesLibrary.CreateFolderAsync(
                 MixedRealityFilesFolderName,
                 CreationCollisionOption.OpenIfExists);
@@ -571,12 +571,12 @@ namespace HoloLensCommander
         private async Task ShowSetCredentials()
         {
             NetworkCredential credentials = new NetworkCredential(
-                this.UserName, 
+                this.UserName,
                 this.Password);
 
             SetCredentialsDialog credsDialogs = new SetCredentialsDialog(credentials);
             ContentDialogResult dialogResult = await credsDialogs.ShowAsync();
-            
+
             // Was the Ok button clicked?
             if (dialogResult == ContentDialogResult.Primary)
             {
@@ -605,7 +605,8 @@ namespace HoloLensCommander
                 this.expandNetworkSettings,
                 this.useInstalledCertificate,
                 this.defaultSsid,
-                this.defaultNetworkKey);
+                this.defaultNetworkKey,
+                this.appName);
 
             SettingsDialog settingsDialog = new SettingsDialog(settings);
             ContentDialogResult dialogResult = await settingsDialog.ShowAsync();
@@ -630,6 +631,7 @@ namespace HoloLensCommander
                 this.useInstalledCertificate = settings.UseInstalledCertificate;
                 this.defaultSsid = settings.DefaultSsid;
                 this.defaultNetworkKey = settings.DefaultNetworkKey;
+                this.appName = settings.AppName;
                 this.SaveApplicationSettings();
 
                 // Update the device monitors with the new heartbeat interval.
@@ -637,6 +639,7 @@ namespace HoloLensCommander
                 foreach (DeviceMonitorControl monitor in registeredDevices)
                 {
                     ((DeviceMonitorControlViewModel)monitor.DataContext).SetHeartbeatInterval(this.heartbeatInterval);
+                    ((DeviceMonitorControlViewModel)monitor.DataContext).SetKioskAppName(this.appName);
                 }
             }
         }
@@ -712,10 +715,10 @@ namespace HoloLensCommander
                     // Assigning the return value of StopMixedRealityRecordingAsync 
                     // to a Task object to avoid warning 4014 (call is not awaited).
                     Task t = monitor.StopMixedRealityRecordingAsync();
-                }                
+                }
             }
-        }   
-            
+        }
+
         /// <summary>
         /// Command used to uninstall an application on the selected devices.
         /// </summary>
@@ -860,11 +863,13 @@ namespace HoloLensCommander
             this.UserName = this.appSettings.Values[DefaultUserNameKey] as string;
             this.Password = this.appSettings.Values[DefaultPasswordKey] as string;
 
+            this.AppName = this.appSettings.Values[DefaultAppName] as string;
+
             this.defaultSsid = this.appSettings.Values[DefaultSsidKey] as string;
             this.defaultNetworkKey = this.appSettings.Values[DefaultNetworkKeyKey] as string;
 
             if (!bool.TryParse(
-                this.appSettings.Values[AutoReconnectKey] as string, 
+                this.appSettings.Values[AutoReconnectKey] as string,
                 out this.autoReconnect))
             {
                 this.autoReconnect = false;
@@ -952,6 +957,7 @@ namespace HoloLensCommander
             deviceMonitorControl.TagChanged += DeviceMonitorControl_TagChanged;
 
             DeviceMonitorControlViewModel viewModel = deviceMonitorControl.DataContext as DeviceMonitorControlViewModel;
+            viewModel.AppName = this.AppName;
             viewModel.Name = name;
 
             // We want a sorted list of devices.
@@ -982,7 +988,7 @@ namespace HoloLensCommander
         {
             this.appSettings.Values[DefaultUserNameKey] = this.UserName;
             this.appSettings.Values[DefaultPasswordKey] = this.Password;
-
+            this.appSettings.Values[DefaultAppName] = this.AppName;
             this.appSettings.Values[DefaultSsidKey] = this.defaultSsid;
             this.appSettings.Values[DefaultNetworkKeyKey] = this.defaultNetworkKey;
 
@@ -1015,7 +1021,7 @@ namespace HoloLensCommander
                     monitorViewModel.Name));
             }
 
-            try 
+            try
             {
                 StorageFile connectionsFile = await this.localFolder.CreateFileAsync(
                     MainPage.ConnectionsFileName,

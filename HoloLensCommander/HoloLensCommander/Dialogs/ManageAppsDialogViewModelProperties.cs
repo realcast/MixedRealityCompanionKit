@@ -3,7 +3,7 @@
 
 using System.Collections.ObjectModel;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the ManageAppsDialog object.

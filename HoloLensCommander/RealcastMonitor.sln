@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloLensCommander", "HoloLensCommander\HoloLensCommander.csproj", "{8B5388DA-FE17-430A-85C1-5EF7C9AF0F7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealcastMonitor", "HoloLensCommander\RealcastMonitor.csproj", "{8B5388DA-FE17-430A-85C1-5EF7C9AF0F7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +36,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9427EF0-E658-425B-8F42-B7B66BB217C0}
 	EndGlobalSection
 EndGlobal

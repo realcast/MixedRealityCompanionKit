@@ -3,7 +3,7 @@
 
 using Windows.UI.Xaml.Controls;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The class that implements the mixed reality viewer dialog.

@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using Windows.Storage;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Object encapsulating the file(s) required to install an application.

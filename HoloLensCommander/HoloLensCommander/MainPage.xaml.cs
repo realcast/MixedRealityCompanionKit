@@ -3,7 +3,7 @@
 
 using Windows.UI.Xaml.Controls;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The main window of the application.

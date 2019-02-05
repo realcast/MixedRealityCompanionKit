@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     public partial class SetCredentialsDialogViewModel : INotifyPropertyChanged
     {

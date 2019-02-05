@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Tools.WindowsDevicePortal;
 using Windows.UI.Core;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Application install status event handler.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the SettingsDialog object.
@@ -161,6 +161,25 @@ namespace HoloLensCommander
                 {
                     this.useInstalledCertificate = value;
                     this.NotifyPropertyChanged("UseInstalledCertificate");
+                }
+            }
+        }
+
+        private string appName = string.Empty;
+
+        public string AppName
+        {
+            get
+            {
+                return appName;
+            }
+
+            set
+            {
+                if (this.appName != value)
+                {
+                    this.appName = value;
+                    this.NotifyPropertyChanged("AppName");
                 }
             }
         }

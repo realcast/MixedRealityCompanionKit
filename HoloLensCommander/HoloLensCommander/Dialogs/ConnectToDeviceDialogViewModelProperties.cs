@@ -4,7 +4,7 @@
 using System.ComponentModel;
 using Windows.UI.Xaml;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the ConnectToDeviceDialog object.

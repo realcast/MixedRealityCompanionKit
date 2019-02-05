@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using static Microsoft.Tools.WindowsDevicePortal.DevicePortal;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the ManageAppsDialog object.

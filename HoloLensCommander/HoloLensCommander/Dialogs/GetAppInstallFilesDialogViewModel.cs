@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the GetAppInstallFilesDialog fsobject.

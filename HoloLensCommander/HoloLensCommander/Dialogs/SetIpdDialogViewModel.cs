@@ -3,7 +3,7 @@
 
 using System.ComponentModel;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     public partial class SetIpdDialogViewModel : INotifyPropertyChanged
     {

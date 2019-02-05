@@ -3,7 +3,7 @@
 
 using Windows.UI.Xaml.Controls;
     
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     public sealed partial class DeviceInformationDialog : ContentDialog
     {

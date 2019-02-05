@@ -9,7 +9,7 @@ using System.Diagnostics;
 using Windows.Storage;
 using Windows.UI.Core;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the MainPage.
@@ -22,6 +22,7 @@ namespace HoloLensCommander
         private static readonly string AutoReconnectKey = "autoReconnect";
         private static readonly string DefaultNetworkKeyKey = "defaultNetworkKey";
         private static readonly string DefaultPasswordKey = "defaultPassword";
+        private static readonly string DefaultAppName = "isxp-xxxx";
         private static readonly string DefaultSsidKey = "defaultSsid";
         private static readonly string DefaultUserNameKey = "defaultUserName";
         private static readonly string ExpandCredentialsKey = "expandCredentials";

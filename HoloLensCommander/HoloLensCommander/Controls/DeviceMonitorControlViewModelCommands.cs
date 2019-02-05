@@ -9,7 +9,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using static Microsoft.Tools.WindowsDevicePortal.DevicePortal;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// The view model for the DeviceMonitorControl object.
@@ -75,6 +75,11 @@ namespace HoloLensCommander
         internal void SetHeartbeatInterval(float heartbeatInterval)
         {
             this.deviceMonitor.HeartbeatInterval = heartbeatInterval;
+        }
+
+        internal void SetKioskAppName(string appName)
+        {
+            this.AppName = appName;
         }
 
         /// <summary>

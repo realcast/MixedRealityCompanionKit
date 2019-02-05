@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     /// <summary>
     /// Delegate defining the method signature for handling the AppInstalled event.
@@ -286,7 +286,7 @@ namespace HoloLensCommander
         /// </summary>
         /// <returns></returns>
         internal async Task WipeCameraRollAsync()
-        {
+        { 
             await this.ViewModel.WipeCameraRollAsync();
         }
 

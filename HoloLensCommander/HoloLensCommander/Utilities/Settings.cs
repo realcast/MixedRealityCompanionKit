@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoloLensCommander
+namespace RealcastMonitor
 {
     public class Settings
     {
@@ -12,6 +12,11 @@ namespace HoloLensCommander
         public static readonly float DefaultHeartbeatInterval = 5.0f;
         public static readonly float MaxHeartbeatInterval = 60.0f;
         public static readonly float MinHeartbeatInterval = 1.0f;
+
+        /// <summary>
+        /// App for kiosk mode
+        /// </summary>
+        public string AppName = string.Empty;
 
         /// <summary>
         /// Indicates whether or not the application should reconnect to the previous
@@ -108,6 +113,7 @@ namespace HoloLensCommander
             false,          // expandNetworkSettigns
             false,          // useInstalledCertificate
             string.Empty,   // defaultSsid
+            string.Empty,
             string.Empty)   // defaultNetworkKey
         { }
 
@@ -124,7 +130,8 @@ namespace HoloLensCommander
             bool expandNetworkSettings,
             bool useInstalledCertificate,
             string defaultSsid,
-            string defaultNetworkKey)
+            string defaultNetworkKey,
+            string defaultAppName)
         {
             this.AutoReconnect = autoReconnect;
             this.HeartbeatInterval = interval;
@@ -135,6 +142,7 @@ namespace HoloLensCommander
 
             this.DefaultSsid = defaultSsid;
             this.DefaultNetworkKey = defaultNetworkKey;
+            this.AppName = defaultAppName;
         }
     }
 }
